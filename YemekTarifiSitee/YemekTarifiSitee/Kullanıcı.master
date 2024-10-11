@@ -1,0 +1,140 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Kullanıcı.master.cs" Inherits="Kullanıcı" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="StyleSheet.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+ 
+ 
+ 
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            height: 23px;
+            text-align: center;
+        }
+        .auto-style3 {
+            text-align: center;
+        }
+        .auto-style4 {
+            color: #660066;
+        }
+        .auto-style7 {
+            background-color: #FFCCFF;
+        }
+        .auto-style5 {
+            font-size: large;
+        }
+        .auto-style6 {
+            height: 23px;
+        }
+        .auto-style8 {
+            margin-left: 143px;
+        }
+        </style>
+ 
+ 
+ 
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div style ="height:150px;width:700px;margin-left:300px; background-color:#CCCCFF;" > 
+        <%--        en baştaki kutu--%>
+        <asp:Image ID="Image1" runat="server" CssClass="auto-style8" Height="151px" ImageUrl="~/resimler/Ekran görüntüsü 2024-09-07 233618.png" Width="436px" />
+    </div>
+
+        <div style ="margin-left:300px; width:700px;height:20px;">&nbsp</div>
+          <%--   aradaki boşluk--%>
+        
+        <div style ="margin-left:300px; width:700px;height:30px;background-color:#CCCCFF;">
+            <table class="auto-style1">
+                <tr>
+                    <td class="auto-style2"><a href="Anasayfa.aspx"><strong>ANASAYFA</strong></a></td>
+                    <td class="auto-style2"><a href ="GununYemegi.aspx"><strong>GÜNÜN YEMEĞİ</strong></a></td>
+                    <td class="auto-style2"><a href="TarifOner.aspx"><strong>TARİF ÖNER</strong></a></td>
+                    <td class="auto-style2"><a href="Hakkimizda.aspx"><strong>HAKKIMIZDA</strong></a></td>
+                    <td class="auto-style2"><a href ="iletisim.aspx"><strong>İLETİŞİM</strong></a></td>
+                </tr>
+            </table>
+        </div>
+           <%--menü adları--%>
+
+         <div style ="margin-left:300px; width:700px;height:20px;">&nbsp</div>
+         <%--   aradaki boşluk--%>
+
+
+        <div style ="margin-left:300px; width:700px;height:300px;">&nbsp
+           
+            <div style ="width:200px;float:left;height:auto;background-color:#CCCCFF; ">
+                <div class="auto-style3">
+                    <span class="auto-style4"><strong>KATEGORİLER</strong></span><br />
+                    <br />
+                </div>
+                <asp:DataList ID="DataList1" runat="server" Width="187px" OnSelectedIndexChanged="DataList1_SelectedIndexChanged">
+                    <ItemTemplate>
+                        <div style="border: medium solid #FFCCFF">
+                            <a href="KategoriDetay.aspx?Kategoriid=<%#Eval("Kategoriid") %>"><asp:Label ID="Label1" runat="server" Text='<%# Eval("KategoriAd") %>'></asp:Label></a>
+                            &nbsp;(<asp:Label ID="Label2" runat="server" Text='<%# Eval("KategoriAdet") %>'></asp:Label>
+                            )</div>
+                    </ItemTemplate>
+                </asp:DataList>
+            </div>
+        <div style ="width:450px;float:left;height:auto;background-color:#CCCCFF;margin-left:50px;">
+              <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                  <asp:DataList ID="DataList2" runat="server">
+                      <ItemTemplate>
+                          <table class="auto-style1">
+                              <tr>
+                                  <td class="auto-style7"><strong><a href="YemekDetay.aspx?Yemekid=<%# Eval("Yemekid") %>" >
+                                      <asp:Label ID="Label3" runat="server" CssClass="auto-style5" Text='<%# Eval("YemekAd") %>'></asp:Label>
+                                      </a></strong></td>
+                              </tr>
+                              <tr>
+                                  <td>&nbsp;Malzemeler:<asp:Label ID="Label4" runat="server" Text='<%# Eval("YemekMalzeme") %>'></asp:Label>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>Yemek Tarifi:<asp:Label ID="Label5" runat="server" Text='<%# Eval("YemekTarif") %>'></asp:Label>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td class="auto-style6">Eklenme Tarihi:
+                                      <asp:Label ID="Label6" runat="server" Text='<%# Eval("YemekTarih") %>'></asp:Label>
+                                      &nbsp; Puan:
+                                      <asp:Label ID="Label7" runat="server" Text='<%# Eval("YemekPuan") %>'></asp:Label>
+                                      &nbsp;&nbsp;&nbsp; </td>
+                              </tr>
+                              <tr>
+                                  <td>&nbsp;</td>
+                              </tr>
+                              Lezzet dolu bir dünyaya hoş geldiniz! Sitemiz, mutfak tutkunları için yaratılmış bir platformdur. İster yeni tarifler denemek isteyin, ister klasik yemekleri keşfetmek, burada her damak zevkine uygun tarifleri bulabilirsiniz. Yemek yapmayı sevenlerin buluşma noktası olarak, en taze malzemelerle yapılan, evde kolayca hazırlayabileceğiniz tarifleri sizlerle paylaşıyoruz. Amacımız, mutfağınıza ilham getirerek sofralarınıza lezzet katmak. Afiyet olsun!
+                              <tr>
+                                  <td>&nbsp;</td>
+                              </tr>
+                          </table>
+                      </ItemTemplate>
+                  </asp:DataList>
+        
+        </asp:ContentPlaceHolder>
+        </div>
+        </div>
+
+
+          
+
+       <%-- class="auto-style1"--%>
+
+<%--        class="auto-style3"--%>
+
+    </form>
+</body>
+</html>
+
